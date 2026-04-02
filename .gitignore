@@ -1,0 +1,16 @@
+# Xcode
+*.xcuserstate
+xcuserdata/
+*.moved-aside
+*.orig
+DerivedData/
+*.hmap
+*.ipa
+*.xcarchive
+
+# Secrets
+Secrets.xcconfig
+GoogleService-Info.plist
+
+# macOS
+.DS_Store
