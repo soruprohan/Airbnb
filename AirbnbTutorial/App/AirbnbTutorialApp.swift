@@ -1,9 +1,3 @@
-//
-//  AirbnbTutorialApp.swift
-//  AirbnbTutorial
-//
-//  Created by sorup rohan on 7/2/26.
-//
 
 //
 //  AirbnbTutorialApp.swift

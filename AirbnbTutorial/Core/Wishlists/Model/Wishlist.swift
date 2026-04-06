@@ -1,9 +1,3 @@
-//
-//  Wishlist.swift
-//  AirbnbTutorial
-//
-//  Created by sorup rohan on 5/3/26.
-//
 
 ///
 //  Wishlist.swift
