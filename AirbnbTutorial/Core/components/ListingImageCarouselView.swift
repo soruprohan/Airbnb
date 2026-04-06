@@ -1,9 +1,3 @@
-//
-//  ListingImageCarouselView.swift
-//  AirbnbTutorial
-//
-//  Created by sorup rohan on 1/3/26.
-//
 
 //
 //  ListingImageCarouselView.swift

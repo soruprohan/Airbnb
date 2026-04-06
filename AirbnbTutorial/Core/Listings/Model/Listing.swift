@@ -1,9 +1,6 @@
 //
 //  Listing.swift
 //  AirbnbTutorial
-//
-//  Created by sorup rohan on 2/3/26.
-//
 
 import Foundation
 
