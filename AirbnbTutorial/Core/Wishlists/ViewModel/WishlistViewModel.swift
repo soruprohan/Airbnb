@@ -1,5 +1,3 @@
-
-
 //
 //  WishlistViewModel.swift
 //  AirbnbTutorial
@@ -32,7 +30,7 @@ class WishlistViewModel: ObservableObject {
             .collection("wishlists")
             .getDocuments() else { return }
 
-        self.wishlists = snapshot.documents.compactMap {
+        self.wishlists = snapshot.documents.compactMap { //compactMap automatically filters out any documents that fail decoding (instead of crashing)
             try? $0.data(as: Wishlist.self)
         }
 

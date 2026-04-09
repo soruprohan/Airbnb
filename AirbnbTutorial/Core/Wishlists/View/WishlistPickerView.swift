@@ -143,6 +143,6 @@ struct WishlistPickerView: View {
                 }
             }
         }
-        .presentationDetents([.medium])
+        .presentationDetents([.medium]) //take 50% of the screen height when it appears
     }
 }

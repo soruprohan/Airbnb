@@ -5,7 +5,7 @@ import Foundation
 
 @MainActor
 class ExploreViewModel: ObservableObject {
-    @Published var listings = [Listing]()
+    @Published var listings = [Listing]() //initialized an empty array of listing objects
     @Published var searchLocation = ""
     @Published var isLoading = false
     @Published var errorMessage: String?
@@ -28,7 +28,8 @@ class ExploreViewModel: ObservableObject {
         isLoading = true
         errorMessage = nil
         do {
-            self.listings = try await service.fetchListings(
+            self.listings = try await service.fetchListings( //calls the fetchListings function in the service, which returns an array of listing objects.
+                                                            //  We assign that array to our @Published listings property, which will trigger a UI update.
                 location: location,
                 startDate: startDate,
                 endDate: endDate,

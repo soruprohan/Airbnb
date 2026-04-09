@@ -1,5 +1,3 @@
-
-
 //
 //  ListingsMapView.swift
 //  AirbnbTutorial
@@ -66,6 +64,8 @@ struct ListingsMapView: View {
         let lats = listings.map(\.latitude)
         let lngs = listings.map(\.longitude)
 
+        //Finds the midpoint between the northernmost and southernmost listing (and east/west).
+        //This becomes the center of the map
         let centerLat = (lats.min()! + lats.max()!) / 2
         let centerLng = (lngs.min()! + lngs.max()!) / 2
 

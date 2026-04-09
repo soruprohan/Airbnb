@@ -1,6 +1,4 @@
-
-
-//  AppUser.swift
+// AppUser.swift
 
 import Foundation
 

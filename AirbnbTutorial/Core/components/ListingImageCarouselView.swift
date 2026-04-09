@@ -14,15 +14,15 @@ struct ListingImageCarouselView: View {
             ForEach(listing.imageURLs, id: \.self) { urlString in
                 if let url = URL(string: urlString), urlString.hasPrefix("http") {
                     // ── Remote image from API ───────────────────────
-                    AsyncImage(url: url) { phase in
-                        switch phase {
+                    AsyncImage(url: url) { phase in //SwiftUI's built-in async image loader
+                        switch phase {              //phase represents the current loading state.
                         case .success(let image):
                             image
                                 .resizable()
                                 .scaledToFill()
                         case .failure:
                             placeholderView
-                        case .empty:
+                        case .empty:  //Image is still loading
                             ZStack {
                                 Color(.systemGray6)
                                 ProgressView()

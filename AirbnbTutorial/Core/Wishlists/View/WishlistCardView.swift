@@ -11,7 +11,7 @@ struct WishlistCardView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            // Placeholder icon – replace with an AsyncImage thumbnail later (Phase 4)
+            // Placeholder icon
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color(.systemGray5))

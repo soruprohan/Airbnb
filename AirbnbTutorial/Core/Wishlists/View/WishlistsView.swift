@@ -144,7 +144,7 @@ private extension WishlistsView {
         }
     }
 
-    // ── Create wishlist sheet ──────────────────────────────────────────
+    // ── Create wishlist sheet ─────────────────────────────────────────-
     var createWishlistSheet: some View {
         NavigationStack {
             VStack(spacing: 24) {

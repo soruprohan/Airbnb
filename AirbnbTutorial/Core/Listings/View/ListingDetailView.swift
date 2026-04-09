@@ -27,7 +27,8 @@ struct ListingDetailView: View {
             ),
             span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05) //zoom level
         )
-        self._cameraPosition = State(initialValue: .region(region)) //to access a state variable in an initializer, we need to use the underscore syntax and assign to the State wrapper itself, not the wrapped value. This sets the initial camera position to be centered on the listing's location when the view first appears.
+        self._cameraPosition = State(initialValue: .region(region)) //to access a state variable in an initializer, we need to use the underscore syntax and assign to the State wrapper itself,
+                                                                    //  not the wrapped value. This sets the initial camera position to be centered on the listing's location when the view first appears.
     }
 
     var body: some View {

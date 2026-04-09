@@ -64,7 +64,8 @@ struct ListingItemView: View {
             .font(.footnote)
         }
         .sheet(isPresented: $showLoginSheet) {
-            LoginView()  //need a .environmentObject here because LoginView needs access to AuthViewModel to perform login action and update app state
+            LoginView()
+                .environmentObject(authViewModel) //added environment object so LoginView can update auth state
         }
         .sheet(isPresented: $showWishlistPicker) {
             WishlistPickerView(listing: listing)

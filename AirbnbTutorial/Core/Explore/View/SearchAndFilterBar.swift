@@ -1,9 +1,7 @@
 //
 //  SearchAndFilterBar.swift
 //  AirbnbTutorial
-//
-//  Created by sorup rohan on 7/2/26.
-//
+
 
 import SwiftUI
 
@@ -23,7 +21,7 @@ struct SearchAndFilterBar: View {
             }
             Spacer()
             
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: { //empty action for now since the button will be handled by the parent view 
                 Image(systemName: "line.3.horizontal.decrease.circle")
                     .foregroundStyle(.black)
             })
@@ -41,5 +39,6 @@ struct SearchAndFilterBar: View {
 }
 
 #Preview {
-    SearchAndFilterBar(location: .constant("Los Angeles"))
+    SearchAndFilterBar(location: .constant("Los Angeles")) //since the location variable is a binding,
+                                                        //  we need to provide a constant value for the preview.
 }

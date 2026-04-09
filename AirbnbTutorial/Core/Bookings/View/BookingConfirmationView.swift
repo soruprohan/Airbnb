@@ -175,7 +175,7 @@ struct BookingConfirmationView: View {
         isProcessing = true
         showError = false
 
-        // Step 7 — availability check
+        // availability check
         let available = await bookingViewModel.isListingAvailable(
             listingId: listing.id,
             checkIn: checkIn,

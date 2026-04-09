@@ -54,7 +54,7 @@ struct AccessibilityView: View {
             }
 
             Section("Feedback") {
-                Toggle("Haptic feedback", isOn: $hapticFeedbackEnabled)
+                Toggle("Haptic feedback", isOn: $hapticFeedbackEnabled) //isOn is a parameter of the Toggle control that expects a binding to a boolean value.
             }
 
             Section {
