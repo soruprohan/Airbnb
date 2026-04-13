@@ -81,5 +81,5 @@ struct ListingsMapView: View {
 }
 
 #Preview {
-    ListingsMapView(listings: DeveloperPreview.shared.listings)
+    ListingsMapView(listings: [Listing.example])
 }

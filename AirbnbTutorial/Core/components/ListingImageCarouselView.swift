@@ -32,7 +32,7 @@ struct ListingImageCarouselView: View {
                         }
                     }
                 } else {
-                    // ── Local asset (DeveloperPreview / fallback) ───
+                    // ── Local asset (fallback) ───
                     Image(urlString)
                         .resizable()
                         .scaledToFill()
@@ -53,6 +53,6 @@ struct ListingImageCarouselView: View {
 }
 
 #Preview {
-    ListingImageCarouselView(listing: DeveloperPreview.shared.listings[0])
+    ListingImageCarouselView(listing: Listing.example)
         .frame(height: 320)
 }

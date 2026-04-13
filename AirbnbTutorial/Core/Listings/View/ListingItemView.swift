@@ -90,7 +90,7 @@ struct ListingItemView: View {
 }
 
 #Preview {
-    ListingItemView(listing: DeveloperPreview.shared.listings[0])
+    ListingItemView(listing: Listing.example)
         .environmentObject(AuthViewModel())
         .environmentObject(WishlistViewModel())
         .environmentObject(ExploreViewModel(service: ExploreService()))

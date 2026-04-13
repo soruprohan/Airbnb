@@ -300,6 +300,6 @@ struct ListingDetailView: View {
 }
 
 #Preview {
-    ListingDetailView(listing: DeveloperPreview.shared.listings[3])
+    ListingDetailView(listing: Listing.example)
         .environmentObject(ExploreViewModel(service: ExploreService()))
 }
