@@ -22,7 +22,7 @@ struct SettingsView: View {
                     HStack(spacing: 12) {
                         Circle()
                             .fill(LinearGradient(
-                                colors: [.pink, .orange],
+                                colors: [.blue, .orange],
                                 startPoint: .topLeading,
                                 endPoint: .bottomTrailing
                             ))
@@ -102,7 +102,7 @@ struct SettingsView: View {
                     } label: {
                         Text("Log in")
                             .fontWeight(.semibold)
-                            .foregroundStyle(.pink)
+                            .foregroundStyle(.blue)
                     }
                 }
             }

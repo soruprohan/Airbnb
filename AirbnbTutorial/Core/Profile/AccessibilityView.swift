@@ -37,7 +37,7 @@ struct AccessibilityView: View {
                             in: 0...Double(textSizes.count - 1),
                             step: 1
                         )
-                        .tint(.pink)
+                        .tint(.blue)
                         Text("A").font(.title3).foregroundStyle(.secondary)
                     }
 
@@ -60,7 +60,7 @@ struct AccessibilityView: View {
             Section {
                 HStack(alignment: .top, spacing: 12) {
                     Image(systemName: "info.circle.fill")
-                        .foregroundStyle(.pink)
+                        .foregroundStyle(.blue)
                         .padding(.top, 1)
                     Text("Options like High Contrast, Bold Text, and Reduce Motion are available in your iPhone's **Settings → Accessibility**.")
                         .font(.caption)

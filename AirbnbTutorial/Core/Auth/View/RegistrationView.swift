@@ -20,7 +20,7 @@ struct RegistrationView: View {
             VStack(spacing: 8) {
                 Image(systemName: "house.fill")
                     .font(.system(size: 48))
-                    .foregroundStyle(.pink)
+                    .foregroundStyle(.blue)
                 
                 Text("Create an account")
                     .font(.title2)
@@ -70,7 +70,7 @@ struct RegistrationView: View {
                         .tint(.white)
                         .frame(maxWidth: .infinity)
                         .frame(height: 48)
-                        .background(.pink)
+                        .background(.blue)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                 } else {
                     Text("Sign up")
@@ -78,7 +78,7 @@ struct RegistrationView: View {
                         .fontWeight(.semibold)
                         .frame(maxWidth: .infinity)
                         .frame(height: 48)
-                        .background(.pink)
+                        .background(.blue)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
             }

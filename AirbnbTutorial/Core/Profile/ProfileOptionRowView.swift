@@ -40,7 +40,7 @@ struct ProfileOptionRowView: View {
 
 #Preview {
     VStack {
-        ProfileOptionRowView(imageName: "suitcase.fill", title: "My Trips", iconColor: .pink)
+        ProfileOptionRowView(imageName: "suitcase.fill", title: "My Trips", iconColor: .blue)
         ProfileOptionRowView(imageName: "gear", title: "Settings", iconColor: .gray)
         ProfileOptionRowView(imageName: "accessibility", title: "Accessibility", iconColor: .blue)
     }

@@ -87,7 +87,7 @@ struct HelpCenterView: View {
                 Link(destination: URL(string: "mailto:support@example.com")!) {
                     HStack {
                         Image(systemName: "envelope")
-                            .foregroundStyle(.pink)
+                            .foregroundStyle(.blue)
                             .frame(width: 28)
                         Text("Email support")
                             .foregroundStyle(.primary)
@@ -101,7 +101,7 @@ struct HelpCenterView: View {
                 Link(destination: URL(string: "https://www.airbnb.com/help")!) {
                     HStack {
                         Image(systemName: "globe")
-                            .foregroundStyle(.pink)
+                            .foregroundStyle(.blue)
                             .frame(width: 28)
                         Text("Visit Airbnb Help Center")
                             .foregroundStyle(.primary)

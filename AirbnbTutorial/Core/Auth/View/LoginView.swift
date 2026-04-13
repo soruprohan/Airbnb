@@ -19,7 +19,7 @@ struct LoginView: View {
                 VStack(spacing: 8) {
                     Image(systemName: "house.fill")
                         .font(.system(size: 48))
-                        .foregroundStyle(.pink)
+                        .foregroundStyle(.blue)
                     
                     Text("Welcome back")
                         .font(.title2)
@@ -63,7 +63,7 @@ struct LoginView: View {
                             .tint(.white)
                             .frame(maxWidth: .infinity)
                             .frame(height: 48)
-                            .background(.pink)
+                            .background(.blue)
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                     } else {
                         Text("Log in")
@@ -71,7 +71,7 @@ struct LoginView: View {
                             .fontWeight(.semibold)
                             .frame(maxWidth: .infinity)
                             .frame(height: 48)
-                            .background(.pink)
+                            .background(.blue)
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                     }
                 }
@@ -86,7 +86,7 @@ struct LoginView: View {
                             .foregroundStyle(.primary)
                         Text("Sign up")
                             .fontWeight(.semibold)
-                            .foregroundStyle(.pink)
+                            .foregroundStyle(.blue)
                     }
                     .font(.footnote)
                 }

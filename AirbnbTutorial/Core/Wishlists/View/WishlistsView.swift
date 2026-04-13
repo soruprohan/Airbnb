@@ -86,7 +86,7 @@ private extension WishlistsView {
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .frame(width: 360, height: 48)
-                    .background(.pink)
+                    .background(.blue)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
             }
             Spacer()
@@ -167,7 +167,7 @@ private extension WishlistsView {
                         .fontWeight(.semibold)
                         .frame(maxWidth: .infinity)
                         .frame(height: 48)
-                        .background(.pink)
+                        .background(.blue)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                         .padding(.horizontal)
                 }

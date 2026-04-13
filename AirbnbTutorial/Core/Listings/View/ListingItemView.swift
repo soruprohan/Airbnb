@@ -83,7 +83,7 @@ struct ListingItemView: View {
         } label: {
             Image(systemName: isSaved ? "heart.fill" : "heart")
                 .font(.system(size: 22))
-                .foregroundStyle(isSaved ? .pink : .white)
+                .foregroundStyle(isSaved ? .blue : .white)
                 .shadow(color: .black.opacity(0.3), radius: 3, x: 0, y: 1)
         }
     }

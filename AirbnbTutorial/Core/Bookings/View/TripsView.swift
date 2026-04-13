@@ -64,7 +64,7 @@ struct TripsView: View {
                     .frame(width: 90, height: 90)
                 Image(systemName: icon)
                     .font(.system(size: 36))
-                    .foregroundStyle(.pink)
+                    .foregroundStyle(.blue)
             }
 
             VStack(spacing: 8) {
@@ -87,7 +87,7 @@ struct TripsView: View {
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .frame(width: 200, height: 50)
-                        .background(.pink)
+                        .background(.blue)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
             }
@@ -253,10 +253,10 @@ struct BookingDetailView: View {
 
                         HStack {
                             Label("\(nights) night\(nights > 1 ? "s" : "")", systemImage: "moon.fill")
-                                .foregroundStyle(.pink)
+                                .foregroundStyle(.blue)
                             Spacer()
                             Label("\(booking.numberOfGuests) guest\(booking.numberOfGuests > 1 ? "s" : "")", systemImage: "person.2.fill")
-                                .foregroundStyle(.pink)
+                                .foregroundStyle(.blue)
                         }
                         .font(.subheadline)
                         .padding(.horizontal, 4)

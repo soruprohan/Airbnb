@@ -41,7 +41,7 @@ struct WishlistPickerView: View {
                                         .fill(Color(.systemGray5))
                                         .frame(width: 56, height: 56)
                                     Image(systemName: "heart.fill")
-                                        .foregroundStyle(.pink)
+                                        .foregroundStyle(.blue)
                                 }
 
                                 VStack(alignment: .leading, spacing: 2) {
@@ -58,7 +58,7 @@ struct WishlistPickerView: View {
 
                                 if wishlist.listingIds.contains(listing.id) {
                                     Image(systemName: "checkmark.circle.fill")
-                                        .foregroundStyle(.pink)
+                                        .foregroundStyle(.blue)
                                         .font(.title3)
                                 }
                             }
@@ -128,7 +128,7 @@ struct WishlistPickerView: View {
                         .fontWeight(.semibold)
                         .frame(maxWidth: .infinity)
                         .frame(height: 48)
-                        .background(.pink)
+                        .background(.blue)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                         .padding(.horizontal)
                 }

@@ -31,12 +31,12 @@ struct ListingsMapView: View {
                                 .foregroundStyle(.white)
                                 .padding(.horizontal, 8)
                                 .padding(.vertical, 4)
-                                .background(.pink)
+                                .background(.blue)
                                 .clipShape(Capsule())
 
                             Image(systemName: "arrowtriangle.down.fill")
                                 .font(.system(size: 8))
-                                .foregroundStyle(.pink)
+                                .foregroundStyle(.blue)
                                 .offset(y: -2)
                         }
                     }

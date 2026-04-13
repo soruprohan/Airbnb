@@ -19,7 +19,7 @@ struct WishlistCardView: View {
 
                 Image(systemName: "heart.fill")
                     .font(.system(size: 32))
-                    .foregroundStyle(.pink)
+                    .foregroundStyle(.blue)
             }
 
             Text(wishlist.name)

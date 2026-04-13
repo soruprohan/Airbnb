@@ -30,7 +30,7 @@ struct ProfileView: View {
                                 ProfileOptionRowView(
                                     imageName: "suitcase.fill",
                                     title: "My Trips",
-                                    iconColor: .pink
+                                    iconColor: .blue
                                 )
                             }
                             .buttonStyle(.plain)
@@ -104,7 +104,7 @@ struct ProfileView: View {
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
                     .frame(height: 50)
-                    .background(.pink)
+                    .background(.blue)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             }
 
@@ -137,12 +137,12 @@ struct ProfileView: View {
                 ZStack {
                     Circle()
                         .fill(LinearGradient(
-                            colors: [.pink, .orange],
+                            colors: [.blue, .orange],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         ))
                         .frame(width: 80, height: 80)
-                        .shadow(color: .pink.opacity(0.4), radius: 8, x: 0, y: 4)
+                        .shadow(color: .blue.opacity(0.4), radius: 8, x: 0, y: 4)
 
                     Text(user.fullName.prefix(1).uppercased())
                         .font(.system(size: 32, weight: .bold))

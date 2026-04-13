@@ -181,14 +181,14 @@ struct ListingDetailView: View {
                     )) {
                         ZStack {
                             Circle()
-                                .fill(.pink.opacity(0.2))
+                                .fill(.blue.opacity(0.2))
                                 .frame(width: 48, height: 48)
                             Circle()
                                 .fill(.white)
                                 .frame(width: 32, height: 32)
                                 .shadow(radius: 4)
                             Image(systemName: "house.fill")
-                                .foregroundStyle(.pink)
+                                .foregroundStyle(.blue)
                                 .font(.system(size: 14))
                         }
                     }
@@ -266,7 +266,7 @@ struct ListingDetailView: View {
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .frame(width: 140, height: 40)
-                        .background(.pink)
+                        .background(.blue)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
             }

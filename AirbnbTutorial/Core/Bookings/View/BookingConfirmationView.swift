@@ -142,7 +142,7 @@ struct BookingConfirmationView: View {
                             .font(.subheadline).fontWeight(.semibold)
                             .frame(maxWidth: .infinity)
                             .frame(height: 50)
-                            .background(isProcessing ? Color.pink.opacity(0.6) : Color.pink)
+                            .background(isProcessing ? Color.blue.opacity(0.6) : Color.blue)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
                         .disabled(isProcessing)
@@ -215,7 +215,7 @@ struct BookingSuccessView: View {
             VStack(spacing: 24) {
                 Image(systemName: "checkmark.circle.fill")
                     .font(.system(size: 80))
-                    .foregroundStyle(.pink)
+                    .foregroundStyle(.blue)
                 Text("You're confirmed!")
                     .font(.title).fontWeight(.bold)
                 Text("Your reservation has been saved.\nCheck your Trips tab to manage it.")
@@ -229,7 +229,7 @@ struct BookingSuccessView: View {
                         .foregroundStyle(.white)
                         .font(.subheadline).fontWeight(.semibold)
                         .frame(width: 200, height: 50)
-                        .background(.pink)
+                        .background(.blue)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
             }
