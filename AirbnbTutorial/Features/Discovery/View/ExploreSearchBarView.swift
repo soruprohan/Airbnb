@@ -1,21 +1,21 @@
 //
-//  SearchAndFilterBar.swift
+//  ExploreSearchBarView.swift
 //  AirbnbTutorial
 
 
 import SwiftUI
 
-struct SearchAndFilterBar: View {
+struct ExploreSearchBarView: View {
     @Binding var location: String
     
     var body: some View {
         HStack{
             Image(systemName: "magnifyingglass")
             VStack(alignment: .leading, spacing: 2) {
-                Text(location.isEmpty ? "Where to?" : location)
+                Text(location.isEmpty ? "Search stays" : location)
                     .font(.footnote)
                     .fontWeight(.semibold)
-                Text("\(location.isEmpty ? "Anywhere - " :"")Any week - Add guests")
+                Text("\(location.isEmpty ? "Any location - " :"")Any dates - Add travelers")
                     .font(.caption2)
                     .foregroundStyle(.gray)
             }
@@ -39,6 +39,6 @@ struct SearchAndFilterBar: View {
 }
 
 #Preview {
-    SearchAndFilterBar(location: .constant("Los Angeles")) //since the location variable is a binding,
+    ExploreSearchBarView(location: .constant("Los Angeles")) //since the location variable is a binding,
                                                         //  we need to provide a constant value for the preview.
 }

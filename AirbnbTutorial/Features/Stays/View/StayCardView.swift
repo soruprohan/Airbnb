@@ -1,9 +1,9 @@
-//  ListingItemView.swift
+//  StayCardView.swift
 //  AirbnbTutorial
 
 import SwiftUI
 
-struct ListingItemView: View {
+struct StayCardView: View {
     let listing: Listing
 
     @EnvironmentObject var authViewModel: AuthViewModel
@@ -20,7 +20,7 @@ struct ListingItemView: View {
     var body: some View {
         VStack(spacing: 8) {
             ZStack(alignment: .topTrailing) {
-                ListingImageCarouselView(listing: listing)
+                CardView(listing: listing)
                     .frame(height: 320)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
 
@@ -45,7 +45,7 @@ struct ListingItemView: View {
                     }
 
                     HStack(spacing: 4) {
-                        Text("$\(listing.pricePerNight)")
+                        Text("৳\(listing.pricePerNight)")
                             .fontWeight(.semibold)
                         Text("night")
                     }
@@ -90,8 +90,61 @@ struct ListingItemView: View {
 }
 
 #Preview {
-    ListingItemView(listing: Listing.example)
+    StayCardView(listing: Listing.example)
         .environmentObject(AuthViewModel())
         .environmentObject(WishlistViewModel())
         .environmentObject(ExploreViewModel(service: ExploreService()))
+}
+
+// MARK: - CardView (image carousel for listing cards)
+
+struct CardView: View {
+    let listing: Listing
+
+    var body: some View {
+        TabView {
+            ForEach(listing.imageURLs, id: \.self) { urlString in
+                if let url = URL(string: urlString), urlString.hasPrefix("http") {
+                    // ── Remote image from API ───────────────────────
+                    AsyncImage(url: url) { phase in //SwiftUI's built-in async image loader
+                        switch phase {              //phase represents the current loading state.
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .scaledToFill()
+                        case .failure:
+                            placeholderView
+                        case .empty:  //Image is still loading
+                            ZStack {
+                                Color(.systemGray6)
+                                ProgressView()
+                            }
+                        @unknown default:
+                            placeholderView
+                        }
+                    }
+                } else {
+                    // ── Local asset (fallback) ───
+                    Image(urlString)
+                        .resizable()
+                        .scaledToFill()
+                }
+            }
+        }
+        .tabViewStyle(.page)
+    }
+
+    private var placeholderView: some View {
+        ZStack {
+            Color(.systemGray5)
+            Image(systemName: "photo")
+                .font(.system(size: 40))
+                .foregroundStyle(.gray)
+        }
+    }
+}
+
+#Preview("CardView") {
+    CardView(listing: Listing.example)
+        .frame(height: 320)
 }

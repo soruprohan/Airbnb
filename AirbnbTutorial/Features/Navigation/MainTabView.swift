@@ -22,7 +22,7 @@ struct MainTabView: View {
                     .navigationTitle("Map")
                     .navigationBarTitleDisplayMode(.inline)
                     .navigationDestination(for: Listing.self) { listing in
-                        ListingDetailView(listing: listing)
+                        StayOverviewView(listing: listing)
                             .navigationBarBackButtonHidden()
                             .environmentObject(exploreViewModel)
                             .environmentObject(authViewModel)

@@ -23,7 +23,6 @@ struct Listing: Identifiable, Codable, Hashable {
     let title: String
     var rating: Double
     var features: [ListingFeatures]
-    var amenities: [ListingAmenities]
     let type: ListingType
 }
 
@@ -55,45 +54,6 @@ enum ListingFeatures : Int, Codable, Identifiable, Hashable {
     }
     
     var id: Int { return self.rawValue } //returns 0 for selfCheckIn, 1 for superHost
-}
-
-enum ListingAmenities : Int, Codable, Identifiable, Hashable {
-    case pool
-    case kitchen
-    case wifi
-    case laundry
-    case tv
-    case alarmSystem
-    case office
-    case balcony
-    
-    var title: String {
-        switch self {
-        case .pool: return "Pool"
-        case .kitchen: return "Kitchen"
-        case .wifi: return "Wifi"
-        case .laundry: return "Laundry"
-        case .tv: return "TV"
-        case .alarmSystem: return "Alarm System"
-        case .office: return "Office"
-        case .balcony: return "Balcony"
-        }
-    }
-    
-    var imageName: String {
-        switch self {
-        case .pool: return "figure.pool.swim"
-        case .kitchen: return "fork.knife"
-        case .wifi: return "wifi"
-        case .laundry: return "washer"
-        case .tv: return "tv"
-        case .alarmSystem: return "checkerboard.shield"
-        case .office: return "pencil.and.ruler.fill"
-        case .balcony: return "building"
-        }
-    }
-    
-    var id: Int { return self.rawValue }
 }
 
 enum ListingType: Int, Codable, Identifiable, Hashable {
@@ -128,7 +88,7 @@ extension Listing {
             numberOfBathrooms: 3,
             numberOfGuests: 4,
             numberOfBeds: 4,
-            pricePerNight: 567,
+            pricePerNight: 68040, // 567 USD × 120 = BDT
             latitude: 25.7850,
             longitude: -80.1936,
             imageURLs: ["listing-2", "listing-1", "listing-3", "listing-4"],
@@ -138,7 +98,6 @@ extension Listing {
             title: "Miami Villa",
             rating: 4.86,
             features: [.selfCheckIn, .superHost],
-            amenities: [.wifi, .alarmSystem, .balcony, .laundry, .tv],
             type: .villa
         )
     }

@@ -84,7 +84,7 @@ struct HelpCenterView: View {
             
             // MARK: - Contact
             Section("Still need help?") {
-                Link(destination: URL(string: "mailto:support@example.com")!) {
+                Link(destination: URL(string: "mailto:sorupr5@gmail.com")!) {
                     HStack {
                         Image(systemName: "envelope")
                             .foregroundStyle(.blue)
@@ -98,12 +98,12 @@ struct HelpCenterView: View {
                     }
                 }
                 
-                Link(destination: URL(string: "https://www.airbnb.com/help")!) {
+                Link(destination: URL(string: "https://www.logarithmstudio.com/")!) {
                     HStack {
                         Image(systemName: "globe")
                             .foregroundStyle(.blue)
                             .frame(width: 28)
-                        Text("Visit Airbnb Help Center")
+                        Text("Visit Help Center")
                             .foregroundStyle(.primary)
                         Spacer()
                         Image(systemName: "arrow.up.right")

@@ -141,7 +141,7 @@ struct BookingRowView: View {
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                     Spacer()
-                    Text("$\(booking.totalPrice)")
+                    Text("৳\(booking.totalPrice)")
                         .font(.subheadline)
                         .fontWeight(.semibold)
                 }
@@ -271,16 +271,16 @@ struct BookingDetailView: View {
                         let perNight = booking.numberOfNights > 0 ? booking.totalPrice / booking.numberOfNights : booking.totalPrice
 
                         HStack {
-                            Text("$\(perNight) × \(nights) night\(nights > 1 ? "s" : "")")
+                            Text("৳\(perNight) × \(nights) night\(nights > 1 ? "s" : "")")
                             Spacer()
-                            Text("$\(booking.totalPrice)")
+                            Text("৳\(booking.totalPrice)")
                         }
                         .font(.subheadline)
 
                         HStack {
                             Text("Service fee")
                             Spacer()
-                            Text("$0")
+                            Text("৳0")
                         }
                         .font(.subheadline).foregroundStyle(.secondary)
 
@@ -289,7 +289,7 @@ struct BookingDetailView: View {
                         HStack {
                             Text("Total (before taxes)").fontWeight(.semibold)
                             Spacer()
-                            Text("$\(booking.totalPrice)").fontWeight(.semibold)
+                            Text("৳\(booking.totalPrice)").fontWeight(.semibold)
                         }
                         .font(.subheadline)
                     }

@@ -1,18 +1,18 @@
-//  DestinationSearchView.swift
+//  ExploreSearchPanelView.swift
 //  AirbnbTutorial
 
 import SwiftUI
 
-enum DestinationSearchOptions {
+enum SearchPanelOption {
     case location
     case dates
     case guests
 }
 
-struct DestinationSearchView: View {
+struct ExploreSearchPanelView: View {
     @Binding var show: Bool
     @ObservedObject var viewModel: ExploreViewModel
-    @State private var selectedOption: DestinationSearchOptions = .location
+    @State private var selectedOption: SearchPanelOption = .location
 
     var body: some View {
         VStack {
@@ -45,7 +45,7 @@ struct DestinationSearchView: View {
             // MARK: - Location
             VStack(alignment: .leading) {
                 if selectedOption == .location {
-                    Text("Where to?")
+                    Text("Search stays")
                         .font(.title2)
                         .fontWeight(.semibold)
 
@@ -53,7 +53,7 @@ struct DestinationSearchView: View {
                         Image(systemName: "magnifyingglass")
                             .imageScale(.small)
 
-                        TextField("Search destinations", text: $viewModel.searchLocation)
+                        TextField("Enter a location", text: $viewModel.searchLocation)
                             .font(.subheadline)
                             .onSubmit {
                                 viewModel.updateListingsForLocation()
@@ -68,10 +68,10 @@ struct DestinationSearchView: View {
                             .foregroundStyle(Color(.systemGray4))
                     }
                 } else {
-                    CollapsedPickerView(title: "Where", description: "Add destination")
+                    CollapsedOptionView(title: "Location", description: "Set location")
                 }
             }
-            .modifier(CollapsibleDestinationViewModifier())
+            .modifier(CollapsiblePanelViewModifier())
             .frame(height: selectedOption == .location ? 120 : 64)
             .onTapGesture {
                 withAnimation(.snappy) { selectedOption = .location }
@@ -80,7 +80,7 @@ struct DestinationSearchView: View {
             // MARK: - Dates (now bound to viewModel)
             VStack(alignment: .leading) {
                 if selectedOption == .dates {
-                    Text("When's your trip?")
+                    Text("Select your dates")
                         .font(.title2)
                         .fontWeight(.semibold)
 
@@ -94,13 +94,13 @@ struct DestinationSearchView: View {
                     .fontWeight(.semibold)
 
                 } else {
-                    CollapsedPickerView(
-                        title: "When",
-                        description: viewModel.formattedDateRange ?? "Add dates"
+                    CollapsedOptionView(
+                        title: "Dates",
+                        description: viewModel.formattedDateRange ?? "Pick dates"
                     )
                 }
             }
-            .modifier(CollapsibleDestinationViewModifier())
+            .modifier(CollapsiblePanelViewModifier())
             .frame(height: selectedOption == .dates ? 180 : 64)
             .onTapGesture {
                 withAnimation(.snappy) { selectedOption = .dates }
@@ -109,7 +109,7 @@ struct DestinationSearchView: View {
             // MARK: - Guests (now bound to viewModel)
             VStack(alignment: .leading) {
                 if selectedOption == .guests {
-                    Text("Who is coming?")
+                    Text("How many travelers?")
                         .font(.title)
                         .fontWeight(.semibold)
 
@@ -123,13 +123,13 @@ struct DestinationSearchView: View {
                     }
 
                 } else {
-                    CollapsedPickerView(
-                        title: "Who",
-                        description: viewModel.numGuests > 1 ? "\(viewModel.numGuests) guests" : "Add guests"
+                    CollapsedOptionView(
+                        title: "Travelers",
+                        description: viewModel.numGuests > 1 ? "\(viewModel.numGuests) travelers" : "Add travelers"
                     )
                 }
             }
-            .modifier(CollapsibleDestinationViewModifier())
+            .modifier(CollapsiblePanelViewModifier())
             .frame(height: selectedOption == .guests ? 120 : 64)
             .onTapGesture {
                 withAnimation(.snappy) { selectedOption = .guests }
@@ -141,10 +141,10 @@ struct DestinationSearchView: View {
 }
 
 #Preview {
-    DestinationSearchView(show: .constant(false), viewModel: ExploreViewModel(service: ExploreService()))
+    ExploreSearchPanelView(show: .constant(false), viewModel: ExploreViewModel(service: ExploreService()))
 }
 
-struct CollapsibleDestinationViewModifier: ViewModifier {
+struct CollapsiblePanelViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .padding()
@@ -155,7 +155,7 @@ struct CollapsibleDestinationViewModifier: ViewModifier {
     }
 }
 
-struct CollapsedPickerView: View {
+struct CollapsedOptionView: View {
     let title: String
     let description: String
 

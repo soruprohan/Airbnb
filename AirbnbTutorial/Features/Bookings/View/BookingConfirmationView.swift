@@ -94,16 +94,16 @@ struct BookingConfirmationView: View {
                             Text("Price details").font(.headline)
 
                             HStack {
-                                Text("$\(listing.pricePerNight) × \(nights) night\(nights > 1 ? "s" : "")")
+                                Text("৳\(listing.pricePerNight) × \(nights) night\(nights > 1 ? "s" : "")")
                                 Spacer()
-                                Text("$\(totalPrice)")
+                                Text("৳\(totalPrice)")
                             }
                             .font(.subheadline)
 
                             HStack {
                                 Text("Service fee")
                                 Spacer()
-                                Text("$0")
+                                Text("৳0")
                             }
                             .font(.subheadline).foregroundStyle(.secondary)
 
@@ -112,7 +112,7 @@ struct BookingConfirmationView: View {
                             HStack {
                                 Text("Total (before taxes)").fontWeight(.semibold)
                                 Spacer()
-                                Text("$\(totalPrice)").fontWeight(.semibold)
+                                Text("৳\(totalPrice)").fontWeight(.semibold)
                             }
                             .font(.subheadline)
                         }

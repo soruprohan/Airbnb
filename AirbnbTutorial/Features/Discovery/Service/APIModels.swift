@@ -31,7 +31,7 @@ struct APISearchResult: Codable {
     let persons: Int?
     let type: String?
     let price: APIPrice?
-    //let host: String?  //to get the host name
+    let host: String?  //host name from the API
 }
 
 // MARK: - Price
@@ -51,7 +51,7 @@ extension APISearchResult {
         let lat = lat ?? 0
         let lng = lng ?? 0
         let imageURLs = images ?? []
-        let pricePerNight = price?.rate ?? 0
+        let pricePerNight = (price?.rate ?? 0) * 120  // Convert USD → BDT
         let ratingDouble = rating ?? 0
         let ownerImageUrl = hostThumbnail ?? ""
         let isSuperhost = isSuperhost ?? false
@@ -68,7 +68,7 @@ extension APISearchResult {
         return Listing(
             id: listingId,
             ownerUid: "external",
-            ownerName: "Host",  //hardcoded //to get the real ---> ownerName: host ?? "Host"
+            ownerName: host ?? "Host",
             ownerImageUrl: ownerImageUrl,
             numberOfBedrooms: bedrooms ?? 1,
             numberOfBathrooms: Int(bathrooms ?? 1),
@@ -84,7 +84,6 @@ extension APISearchResult {
             title: title,
             rating: ratingDouble,
             features: isSuperhost ? [.superHost, .selfCheckIn] : [.selfCheckIn],
-            amenities: [.wifi, .kitchen], //hardcoded for now since API doesn't provide amenities data
             type: listingType
         )
     }

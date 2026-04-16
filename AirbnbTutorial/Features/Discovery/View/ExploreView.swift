@@ -6,15 +6,15 @@
 import SwiftUI
 
 struct ExploreView: View {
-    @State private var showDestinationSearchView = false
+    @State private var showSearchPanel = false
     @ObservedObject var viewModel: ExploreViewModel
     @EnvironmentObject var authViewModel: AuthViewModel
     @EnvironmentObject var bookingViewModel: BookingViewModel
 
     var body: some View {
         NavigationStack {
-            if showDestinationSearchView {
-                DestinationSearchView(show: $showDestinationSearchView, viewModel: viewModel)
+            if showSearchPanel {
+                ExploreSearchPanelView(show: $showSearchPanel, viewModel: viewModel)
             } else {
                 contentView
             }
@@ -26,10 +26,10 @@ struct ExploreView: View {
     @ViewBuilder
     private var contentView: some View {
         ScrollView {
-            SearchAndFilterBar(location: $viewModel.searchLocation)
+            ExploreSearchBarView(location: $viewModel.searchLocation)
                 .onTapGesture {
                     withAnimation(.snappy) {
-                        showDestinationSearchView.toggle()
+                        showSearchPanel.toggle()
                     }
                 }
 
@@ -42,7 +42,7 @@ struct ExploreView: View {
             }
         }
         .navigationDestination(for: Listing.self) { listing in
-            ListingDetailView(listing: listing)
+            StayOverviewView(listing: listing)
                 .navigationBarBackButtonHidden()
                 .environmentObject(viewModel)
                 .environmentObject(authViewModel)
@@ -97,7 +97,7 @@ struct ExploreView: View {
         LazyVStack(spacing: 32) {
             ForEach(viewModel.listings) { listing in
                 NavigationLink(value: listing) {
-                    ListingItemView(listing: listing)
+                    StayCardView(listing: listing)
                         .frame(height: 400)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .environmentObject(viewModel)

@@ -25,7 +25,7 @@ struct ListingsMapView: View {
                 )) {
                     NavigationLink(value: listing) {
                         VStack(spacing: 0) {
-                            Text("$\(listing.pricePerNight)")
+                            Text("৳\(listing.pricePerNight)")
                                 .font(.caption)
                                 .fontWeight(.semibold)
                                 .foregroundStyle(.white)

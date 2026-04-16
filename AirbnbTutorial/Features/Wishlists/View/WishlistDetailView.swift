@@ -31,12 +31,12 @@ struct WishlistDetailView: View {
             } else {
                 LazyVStack(spacing: 32) {
                     ForEach(wishlist.savedListings) { listing in
-                        NavigationLink(destination: ListingDetailView(listing: listing)
+                        NavigationLink(destination: StayOverviewView(listing: listing)
                             .environmentObject(exploreViewModel)
                             .environmentObject(authViewModel)
                             .environmentObject(bookingViewModel)
                         ) {
-                            ListingItemView(listing: listing)
+                            StayCardView(listing: listing)
                                 .padding(.horizontal)
                                 .environmentObject(exploreViewModel)
                         }

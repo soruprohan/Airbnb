@@ -1,6 +1,6 @@
 
 //
-//  ListingDetailView.swift
+//  StayOverviewView.swift
 //  AirbnbTutorial
 //
 
@@ -8,7 +8,7 @@ import SwiftUI
 import MapKit
 import CoreLocation
 
-struct ListingDetailView: View {
+struct StayOverviewView: View {
     @EnvironmentObject var exploreViewModel: ExploreViewModel
     @EnvironmentObject var authViewModel: AuthViewModel
     @EnvironmentObject var bookingViewModel: BookingViewModel
@@ -34,7 +34,7 @@ struct ListingDetailView: View {
     var body: some View {
         ScrollView {
             ZStack(alignment: .topLeading) {
-                ListingImageCarouselView(listing: listing)
+                CardView(listing: listing)
                     .frame(height: 320)
 
                 Button {
@@ -150,14 +150,14 @@ struct ListingDetailView: View {
 
             Divider()
 
-            // Amenities
+            // Amenities (hardcoded — API does not provide amenity data)
             VStack(alignment: .leading, spacing: 16) {
                 Text("What this place offers")
                     .font(.headline)
 
-                ForEach(listing.amenities) { amenity in
+                ForEach(Self.defaultAmenities, id: \.title) { amenity in
                     HStack {
-                        Image(systemName: amenity.imageName)
+                        Image(systemName: amenity.icon)
                             .frame(width: 32)
                         Text(amenity.title)
                             .font(.footnote)
@@ -241,7 +241,7 @@ struct ListingDetailView: View {
             Divider().padding(.bottom)
             HStack {
                 VStack(alignment: .leading) {
-                    Text("$\(listing.pricePerNight)")
+                    Text("৳\(listing.pricePerNight)")
                         .font(.subheadline)
                         .fontWeight(.semibold)
                     Text("Total before taxes")
@@ -297,9 +297,20 @@ struct ListingDetailView: View {
         }
         showBookingSheet = true
     }
+
+    // MARK: - Default amenities (hardcoded — API doesn't provide this data)
+
+    private static let defaultAmenities: [(title: String, icon: String)] = [
+        ("Wifi", "wifi"),
+        ("Kitchen", "fork.knife"),
+        ("TV", "tv"),
+        ("Laundry", "washer"),
+        ("Alarm System", "checkerboard.shield"),
+        ("Balcony", "building")
+    ]
 }
 
 #Preview {
-    ListingDetailView(listing: Listing.example)
+    StayOverviewView(listing: Listing.example)
         .environmentObject(ExploreViewModel(service: ExploreService()))
 }
