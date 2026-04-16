@@ -16,6 +16,10 @@ struct BookingConfirmationView: View {
     @State private var showError = false
     @State private var errorText = ""
 
+    // Edit-mode toggles
+    @State private var isEditingDates = false
+    @State private var isEditingGuests = false
+
     private var checkIn: Date { exploreViewModel.startDate }
     private var checkOut: Date { exploreViewModel.endDate }
     private var guests: Int { exploreViewModel.numGuests }
@@ -64,10 +68,11 @@ struct BookingConfirmationView: View {
 
                         Divider()
 
-                        // Dates & guests
+                        // Dates & guests (editable)
                         VStack(alignment: .leading, spacing: 12) {
                             Text("Your trip").font(.headline)
 
+                            // ── Dates row ──
                             HStack {
                                 VStack(alignment: .leading, spacing: 2) {
                                     Text("Dates").font(.subheadline).fontWeight(.semibold)
@@ -75,8 +80,46 @@ struct BookingConfirmationView: View {
                                         .font(.subheadline).foregroundStyle(.secondary)
                                 }
                                 Spacer()
+                                Button {
+                                    withAnimation(.easeInOut(duration: 0.25)) {
+                                        isEditingDates.toggle()
+                                        if isEditingDates { isEditingGuests = false }
+                                    }
+                                } label: {
+                                    Text(isEditingDates ? "Done" : "Edit")
+                                        .font(.subheadline).fontWeight(.semibold)
+                                        .foregroundStyle(.blue)
+                                        .padding(.horizontal, 16)
+                                        .padding(.vertical, 6)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .stroke(Color.blue, lineWidth: 1)
+                                        )
+                                }
                             }
 
+                            // ── Inline date pickers ──
+                            if isEditingDates {
+                                VStack(spacing: 12) {
+                                    DatePicker("Check-in",
+                                               selection: $exploreViewModel.startDate,
+                                               in: Date()...,
+                                               displayedComponents: .date)
+                                        .datePickerStyle(.compact)
+
+                                    DatePicker("Check-out",
+                                               selection: $exploreViewModel.endDate,
+                                               in: exploreViewModel.startDate.addingTimeInterval(86400)...,
+                                               displayedComponents: .date)
+                                        .datePickerStyle(.compact)
+                                }
+                                .padding()
+                                .background(Color(.systemGray6))
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                .transition(.opacity.combined(with: .move(edge: .top)))
+                            }
+
+                            // ── Guests row ──
                             HStack {
                                 VStack(alignment: .leading, spacing: 2) {
                                     Text("Guests").font(.subheadline).fontWeight(.semibold)
@@ -84,6 +127,64 @@ struct BookingConfirmationView: View {
                                         .font(.subheadline).foregroundStyle(.secondary)
                                 }
                                 Spacer()
+                                Button {
+                                    withAnimation(.easeInOut(duration: 0.25)) {
+                                        isEditingGuests.toggle()
+                                        if isEditingGuests { isEditingDates = false }
+                                    }
+                                } label: {
+                                    Text(isEditingGuests ? "Done" : "Edit")
+                                        .font(.subheadline).fontWeight(.semibold)
+                                        .foregroundStyle(.blue)
+                                        .padding(.horizontal, 16)
+                                        .padding(.vertical, 6)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .stroke(Color.blue, lineWidth: 1)
+                                        )
+                                }
+                            }
+
+                            // ── Inline guest stepper ──
+                            if isEditingGuests {
+                                HStack {
+                                    Text("Number of guests")
+                                        .font(.subheadline)
+
+                                    Spacer()
+
+                                    HStack(spacing: 16) {
+                                        Button {
+                                            if exploreViewModel.numGuests > 1 {
+                                                exploreViewModel.numGuests -= 1
+                                            }
+                                        } label: {
+                                            Image(systemName: "minus.circle")
+                                                .font(.title2)
+                                                .foregroundStyle(exploreViewModel.numGuests > 1 ? .blue : .gray)
+                                        }
+                                        .disabled(exploreViewModel.numGuests <= 1)
+
+                                        Text("\(exploreViewModel.numGuests)")
+                                            .font(.headline)
+                                            .frame(minWidth: 28)
+
+                                        Button {
+                                            if exploreViewModel.numGuests < listing.numberOfGuests {
+                                                exploreViewModel.numGuests += 1
+                                            }
+                                        } label: {
+                                            Image(systemName: "plus.circle")
+                                                .font(.title2)
+                                                .foregroundStyle(exploreViewModel.numGuests < listing.numberOfGuests ? .blue : .gray)
+                                        }
+                                        .disabled(exploreViewModel.numGuests >= listing.numberOfGuests)
+                                    }
+                                }
+                                .padding()
+                                .background(Color(.systemGray6))
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                .transition(.opacity.combined(with: .move(edge: .top)))
                             }
                         }
 
@@ -204,6 +305,7 @@ struct BookingConfirmationView: View {
         isProcessing = false
     }
 }
+
 
 // MARK: - Success screen
 struct BookingSuccessView: View {
